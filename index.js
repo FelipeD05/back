@@ -4,7 +4,7 @@ const getAllUsers = require("./routes/adminAllUsers");
 const login = require("./routes/login");
 
 let app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -28,6 +28,6 @@ app.use((err, req, res, next) => {
     return;
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+app.listen(port,console.log(
+  'Server started on port' ));
 });
