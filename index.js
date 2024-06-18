@@ -1,33 +1,15 @@
-const express = require("express");
-const cors = require("cors");
-const getAllUsers = require("./routes/adminAllUsers");
-const login = require("./routes/login");
+const express = require('express');
 
-let app = express();
-const port = 8080;
+const port = 5000
 
-app.use(cors());
-app.use(express.json());
-app.use(
-    express.urlencoded({
-        extended: true,
-    })
-);
+const app = express();
 
-app.get("/", async (req, res) => {
-    res.json({ message: 'ok' });
-});
+app.use(express.json())
 
-app.use("/admin/allUsers", getAllUsers)
-app.use("/logindata/", login);
-
-app.use((err, req, res, next) => {
-    const statusCode = err.statusCode || 500;
-    console.error(err.message, err.stack);
-    res.status(statusCode).json({ message: err.message });
-    return;
-});
+app.get('/', (req, res) => { 
+    res.send('hola') 
+    res.end() 
+}) 
 
 app.listen(port,console.log(
-  Server started on port ${8080}));
-});
+  'Server started on port' ));
